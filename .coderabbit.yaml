@@ -1,0 +1,28 @@
+language: "en-US"
+early_access: true
+reviews:
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: true
+  review_status: true
+  collapse_walkthrough: true
+  path_filters:
+    - "!**/.xml"
+  path_instructions:
+    - path: "src/**/*.js"
+      instructions: |
+        ""
+    - path: "src/**/*.jsx"
+      instructions: |
+        ""
+  auto_review:
+    enabled: true
+    ignore_title_keywords:
+      - "WIP"
+    drafts: true
+    base_branches:
+      - "develop"
+      - "feat/*"
+      - "main"
+chat:
+  auto_reply: true
