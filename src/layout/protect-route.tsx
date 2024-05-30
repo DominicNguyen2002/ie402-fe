@@ -1,8 +1,11 @@
 import Cookies from 'js-cookie';
-import { Navigate } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 
-export default function ProtectRoute(children) {
+interface Props {
+  children: React.ReactNode;
+}
+
+export default function ProtectRoute({children}: Props) {
   const token = Cookies.get('Authorization');
   const location = useLocation();
 
