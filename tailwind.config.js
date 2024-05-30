@@ -1,13 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./src/**/*.{html,js}'],
+  content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        primary: '#96d4eb',
-        secondary: 'f3fafd',
-        text: '#000000',
-        header: '#2e8cad'
+        "primary": '#96d4eb',
+        "secondary": 'f3fafd',
+        "text": '#000000',
+        "header": '#2e8cad'
       },
       fontSize: {
         'heading-1': [

@@ -9,7 +9,7 @@ module.exports = {
     'eslint-config-prettier',
     'prettier'
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh', 'prettier'],

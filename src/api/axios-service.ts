@@ -1,8 +1,9 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { API } from '~/constants/constants';
 
 const axiosService = axios.create({
-  baseURL: 'http://localhost:5500'
+  baseURL: API
 });
 axiosService.interceptors.request.use(
   async function (config) {
@@ -14,10 +15,12 @@ axiosService.interceptors.request.use(
     return config;
   },
   function (error) {
+    // Do something with request error
     return Promise.reject(error);
   }
 );
 
+// Add a response interceptor
 axiosService.interceptors.response.use(
   function (response) {
     return response;
