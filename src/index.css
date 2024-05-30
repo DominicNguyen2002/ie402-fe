@@ -11,3 +11,31 @@
   font-family: "Montserrat";
   src: local("Montserrat"), url("/public/fonts/Montserrat-Regular.ttf") format("truetype");
 }
+
+@layer base {
+
+  html,
+  body {
+    @apply text-black;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  label {
+    @apply font-heading;
+  }
+
+  div,
+  span,
+  li,
+  p,
+  input,
+  button,
+  a {
+    @apply font-body;
+  }
+}

@@ -1,17 +1,13 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+export default {
+  content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        'dark-slate-gray': '#265E55',
-        wheat: '#F8DFB6',
-        black: '#000201',
-        scarlet: '#F8F8F8',
-        'light-gray': '#D9D9D9',
-        'philippine-gray': '#8F8F8F',
-        yellow: '#FF9533',
-        'red-accent': '#FF5050'
+        "primary": '#96d4eb',
+        "secondary": 'f3fafd',
+        "text": '#000000',
+        "header": '#2e8cad'
       },
       fontSize: {
         'heading-1': [
