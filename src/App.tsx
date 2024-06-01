@@ -5,19 +5,22 @@ import SignUp from './pages/sign-up';
 import ErrorPage from './pages/error';
 import Article from './pages/article';
 import MainLayout from './layout/main-layout';
+import Map from './pages/map';
+import APP_PATH from './constants/app-path';
 
 export default function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/sign-in' element={<SignIn />} />
-          <Route path='/sign-up' element={<SignUp />} />
-          <Route path='/' element={<MainLayout />}>
+          <Route path={APP_PATH['sign-in']} element={<SignIn />} />
+          <Route path={APP_PATH['sign-up']} element={<SignUp />} />
+          <Route path={APP_PATH.home} element={<MainLayout />}>
             <Route index element={<Home />} />
-            <Route path='article' element={<Article />} />
+            <Route path={APP_PATH.article} element={<Article />} />
+            <Route path={APP_PATH.map} element={<Map />} />
           </Route>
-          <Route path='*' element={<ErrorPage />} />
+          <Route path={APP_PATH.error} element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
     </>

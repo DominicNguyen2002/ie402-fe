@@ -1,15 +1,17 @@
+@import '/node_modules/@arcgis/core/assets/esri/themes/light/main.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @font-face {
   font-family: "JosefinSans";
-  src: local("JosefinSans"), url("/public/fonts/JosefinSans-Regular.ttf") format("truetype");
+  src: local("JosefinSans"), url("/fonts/JosefinSans-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Montserrat";
-  src: local("Montserrat"), url("/public/fonts/Montserrat-Regular.ttf") format("truetype");
+  src: local("Montserrat"), url("/fonts/Montserrat-Regular.ttf") format("truetype");
 }
 
 @layer base {

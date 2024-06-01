@@ -12,6 +12,7 @@
     "prettierfix": "prettier --write \"src/**/(*.tsx|*.ts|*.css|*.scss)\""
   },
   "dependencies": {
+    "@arcgis/core": "^4.29.10",
     "@types/prop-types": "^15.7.12",
     "@types/react-lottie": "^1.2.10",
     "axios": "^1.7.2",

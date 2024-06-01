@@ -13,7 +13,7 @@ export function Footer() {
         <div>
           <div className='mb-5 flex justify-center items-center'>
             <button className='cursor-pointer w-[70px] h-[70px]' onClick={() => navigate(APP_PATH.home)}>
-              <img src='public/icon/logo.svg' alt='Logo' />
+              <img src='/icon/logo.svg' alt='Logo' />
             </button>
           </div>
           <p className='mb-[30px] text-justify'>{t('intro')}</p>
