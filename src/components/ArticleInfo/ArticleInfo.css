@@ -1,0 +1,21 @@
+
+.article-info {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .article-info h2 {
+    color: #333;
+  }
+  
+  .article-info h3 {
+    color: #666;
+  }
+  
+  .article-info p {
+    text-align: left;
+    margin: 0 20px;
+    color: #444;
+    line-height: 1.6;
+  }
+  

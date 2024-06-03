@@ -1,0 +1,37 @@
+.article-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 300px;
+  font-family: Arial, sans-serif;
+}
+
+.article-card__image {
+  width: 100%;
+  height: auto;
+}
+
+.article-card__content {
+  padding: 16px;
+}
+
+.article-card__title {
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+
+.article-card__description {
+  font-size: 14px;
+  color: #555;
+  margin: 0 0 10px;
+}
+
+.article-card__link {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.article-card__link:hover {
+  text-decoration: underline;
+}
