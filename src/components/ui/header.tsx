@@ -17,7 +17,7 @@ export function Header() {
     <header className='flex flex-col bg-teal-800'>
       <div className='flex justify-between mt-2 px-10 bg-white items-center h-[80px]'>
         <button className='cursor-pointer w-[70px] h-[70px]' onClick={() => navigate(APP_PATH.home)}>
-          <img src='public/icon/logo.svg' alt='Logo' />
+          <img src='icon/logo.svg' alt='Logo' />
         </button>
         <div className='flex items-center gap-x-[30px]'>
           <div>
