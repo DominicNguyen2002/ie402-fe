@@ -4,10 +4,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        "primary": '#96d4eb',
-        "secondary": 'f3fafd',
-        "text": '#000000',
-        "header": '#2e8cad'
+        'dark-slate-gray': '#265E55',
+        primary: '#96d4eb',
+        secondary: 'f3fafd',
+        text: '#000000',
+        header: '#2e8cad',
+        wheat: '#F8DFB6',
+        black: '#000201',
+        scarlet: '#F8F8F8',
+        'light-gray': '#D9D9D9',
+        'philippine-gray': '#8F8F8F',
+        yellow: '#FF9533',
+        'red-accent': '#FF5050'
       },
       fontSize: {
         'heading-1': [

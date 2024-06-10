@@ -9,7 +9,7 @@ interface CenterProps {
 
 export function Center({ children, isFullScreen = true, className = '' }: CenterProps) {
   const center = 'flex flex-row justify-center items-center';
-  const fullScreenClass = 'w-[100vw] h-[100vh]';
+  const fullScreenClass = 'w-screen h-screen';
   const centerElement = 'w-full h-full';
 
   return <div className={clsx(center, isFullScreen ? fullScreenClass : centerElement, className)}>{children}</div>;
