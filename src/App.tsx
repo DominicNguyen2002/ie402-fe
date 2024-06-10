@@ -7,6 +7,7 @@ import Article from './pages/article';
 import MainLayout from './layout/main-layout';
 import Map from './pages/map';
 import APP_PATH from './constants/app-path';
+import ForgotPassword from './pages/forgot-password';
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Routes>
           <Route path={APP_PATH['sign-in']} element={<SignIn />} />
           <Route path={APP_PATH['sign-up']} element={<SignUp />} />
+          <Route path={APP_PATH['forgot-password']} element={<ForgotPassword />} />
           <Route path={APP_PATH.home} element={<MainLayout />}>
             <Route index element={<Home />} />
             <Route path={APP_PATH.article} element={<Article />} />
