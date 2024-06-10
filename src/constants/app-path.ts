@@ -7,6 +7,7 @@ const APP_PATH = {
   'terms-condition': '/terms-condition',
   faq: '/faq',
   map: '/map',
+  otp: '/otp',
   article: '/article',
   'customer-sevice': '/customer-sevice',
   error: '*'

@@ -1,9 +1,6 @@
-declare interface UserInfoLogin {
-  name: string;
-  email: string;
-  username: string;
+declare interface IUserSign {
+  phone: string;
   password: string;
-  avatar: string;
 }
 
 declare interface IUser {
@@ -15,9 +12,8 @@ declare interface IUser {
   address: IAddress[];
 }
 
-type UpdateUser = Omit<IUser, "password", "address">;
+type UpdateUser = Omit<IUser, 'password', 'address'>;
 
-type AuthenticateLogin = Pick<UserInfoLogin, "username" | "password">;
+type AuthenticateLogin = Pick<UserInfoLogin, 'username' | 'password'>;
 
-type EmailVerify = Pick<UserInfoLogin, "email">;
-
+type EmailVerify = Pick<UserInfoLogin, 'email'>;
