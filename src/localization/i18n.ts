@@ -6,6 +6,7 @@ const resources = {
     translation: {
       start: 'Start',
       'app-title': 'The Disease Control and Prevention Agency',
+      'app-address': 'Go Vap district Ho Chi Minh city',
       'common-or': 'Or',
       'common-second': 'seconds',
       intro:
@@ -47,6 +48,7 @@ const resources = {
     translation: {
       start: 'Bắt đầu',
       'app-title': 'The Disease Control and Prevention Agency',
+      'app-address': 'quận Gò Vấp thành phố Hồ Chí Minh',
       'common-or': 'Hoặc',
       'common-second': 'giây',
       intro:

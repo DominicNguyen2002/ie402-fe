@@ -5,6 +5,7 @@ const APP_PATH = {
   'forgot-password':'/forgot-password',
   'privacy-policy': '/privacy-policy',
   'terms-condition': '/terms-condition',
+  'user-profile': '/user-profile',
   faq: '/faq',
   map: '/map',
   otp: '/otp',

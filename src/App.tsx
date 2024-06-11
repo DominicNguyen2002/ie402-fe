@@ -9,6 +9,7 @@ import Map from './pages/map';
 import APP_PATH from './constants/app-path';
 import ForgotPassword from './pages/forgot-password';
 import OTP from './pages/otp';
+import UserProfile from './pages/user-profile';
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
           <Route path={APP_PATH.home} element={<MainLayout />}>
             <Route index element={<Home />} />
             <Route path={APP_PATH.article} element={<Article />} />
+            <Route path={APP_PATH['user-profile']} element={<UserProfile />} />
             <Route path={APP_PATH.map} element={<Map />} />
           </Route>
           <Route path={APP_PATH.error} element={<ErrorPage />} />
