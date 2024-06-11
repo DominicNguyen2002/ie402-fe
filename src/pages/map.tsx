@@ -5,7 +5,6 @@ export default function Map() {
   const { t } = useTranslation();
   return (
     <div>
-      <p>{t('start')} Map page</p>
       <XMap/>
     </div>
   );
