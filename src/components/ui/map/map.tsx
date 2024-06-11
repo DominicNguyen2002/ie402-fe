@@ -4,7 +4,6 @@ import Map from '@arcgis/core/Map';
 import { Center } from '../../form';
 import LoadingAnimationData from '~/assets/lotties/loading-animation.json';
 import Lottie from 'react-lottie';
-import './css/map.css';
 import Graphic from '@arcgis/core/Graphic';
 import GraphicsLayer from '@arcgis/core/layers/GraphicsLayer';
 import XPoint from './point';

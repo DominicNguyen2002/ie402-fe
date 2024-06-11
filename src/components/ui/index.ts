@@ -1,3 +1,4 @@
 export * from './footer';
 export * from './header';
-export * from './map/map';
+export * from './map';
+export * from './article';
