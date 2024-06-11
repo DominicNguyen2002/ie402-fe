@@ -41,7 +41,9 @@ const resources = {
       'footer-faq': 'FAQ',
       'footer-terms-condition': 'Terms of condition',
       'footer-privacy-policy': 'Privacy Policy',
-      'footer-copyright': '© Copyright 2024 Team 15. All Rights Reserved.'
+      'footer-copyright': '© Copyright 2024 Team 15. All Rights Reserved.',
+      'read-article': 'Read the article',
+      'end-line': ''
     }
   },
   vi: {
@@ -83,7 +85,9 @@ const resources = {
       'footer-faq': 'FAQ',
       'footer-terms-condition': 'Điều khoản',
       'footer-privacy-policy': 'Chính sách bảo mật',
-      'footer-copyright': '© Copyright 2024 Team 15. All Rights Reserved.'
+      'footer-copyright': '© Copyright 2024 Team 15. All Rights Reserved.',
+      'read-article': 'Đọc bài báo',
+      'end-line': ''
     }
   }
 };
