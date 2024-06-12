@@ -6,15 +6,17 @@ import LoadingAnimationData from '~/assets/lotties/loading-animation.json';
 import Lottie from 'react-lottie';
 import Graphic from '@arcgis/core/Graphic';
 import GraphicsLayer from '@arcgis/core/layers/GraphicsLayer';
-import XPoint from './point';
-import XSymbol from './symbol';
 import placeholder from '~/assets/images/placeholder.png';
 import PictureMarkerSymbol from '@arcgis/core/symbols/PictureMarkerSymbol.js';
-
 import PopupTemplate from '@arcgis/core/PopupTemplate';
-import { parsePoint } from '~/utils/point.util';
-import Point from '@arcgis/core/geometry/Point';
-export function XMap() {
+import clsx from 'clsx';
+import { parsePoint, parsePoint2Map } from '~/utils/point.util';
+
+interface MapProps {
+  className?: string;
+  center: GeolocationPosition;
+}
+export function XMap({ className, center }: MapProps) {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const mapRef = useRef(null);
 
@@ -31,19 +33,16 @@ export function XMap() {
     const map = new Map({
       basemap: 'hybrid'
     });
+
     const view = new MapView({
       map: map,
       container: mapRef.current,
-      center: [106.67698403739985, 10.821353493741581],
+      center: parsePoint2Map(center),
       zoom: 13
     });
 
     const graphicsLayer = new GraphicsLayer();
 
-    const _point = parsePoint('[10.821353493741581,106.67698403739985]');
-    const point = new Point({ longitude: _point.longitude, latitude: _point.latitude });
-
-    const symbol = XSymbol({});
     const pointSymbol = new PictureMarkerSymbol({
       url: placeholder,
       width: '64px',
@@ -61,7 +60,7 @@ export function XMap() {
     });
 
     const graphicPoint = new Graphic({
-      geometry: point,
+      geometry: parsePoint(center),
       symbol: pointSymbol,
       attributes: pointAttributes,
       popupTemplate: popupTemplate
@@ -85,14 +84,14 @@ export function XMap() {
   }, []);
 
   return (
-    <div className='relative w-full h-[700px] my-8'>
+    <div className={clsx('relative', className)}>
       {isLoading && (
         <Center className='absolute bg-opacity-80 z-10'>
           <Lottie options={defaultOptions} height={100} width={100} />
         </Center>
       )}
       <Center>
-        <div className='w-[70%] h-full' ref={mapRef}></div>
+        <div className='w-full h-full' ref={mapRef}></div>
       </Center>
     </div>
   );

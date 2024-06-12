@@ -30,7 +30,7 @@ const resources = {
       'sign-dont-have-account': "Don't have an account?",
       'sign-dont-recieve-otp': "Don't recieve the OTP code?",
       'sign-send-again': 'Send again',
-      'sign-30s': 'The OTP code will be send after',
+      'sign-30s': 'The OTP code wsick be send after',
       'sign-have-account': 'Already have an account?',
       'sign-register': 'Register your own account',
       password: 'Password',
@@ -53,6 +53,15 @@ const resources = {
       'current-location': 'Current location',
       'get-current-location': 'Get current location',
       'declare-disease-info': 'Declare disease information',
+      'filter-by': 'Filter by',
+      ward: 'Ward',
+      district: 'District',
+      province: 'Province',
+      state: 'State',
+      default: 'Default',
+      'being-sick': 'Being sick',
+      recovered: 'Recovered',
+      'passed-away-sickness': 'Passed away due to the sickness',
       'end-line': ''
     }
   },
@@ -107,6 +116,15 @@ const resources = {
       'current-location': 'Vị trí hiện tại',
       'get-current-location': 'Lấy vị trí hiện tại',
       'declare-disease-info': 'Khai báo thông tin dịch bệnh',
+      'filter-by': 'Lọc theo',
+      ward: 'Xã / Phường',
+      district: 'Quận / Huyện',
+      province: 'Tỉnh / Thành phố',
+      state: 'Trạng thái',
+      default: 'Mặc định',
+      'being-sick': 'Đang bị bệnh',
+      recovered: 'Đã hết bệnh',
+      'passed-away-sickness': 'Mất do bệnh',
       'end-line': ''
     }
   }

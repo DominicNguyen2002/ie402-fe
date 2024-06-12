@@ -1,11 +1,15 @@
-export const parsePoint = (point: string): IPoint => {
-  const [latitudeStr,longitudeStr] = point
-    .slice(1, -1)
-    .split(',')
-    .map((str) => str.trim());
+import Point from '@arcgis/core/geometry/Point';
 
-  const longitude = parseFloat(longitudeStr);
-  const latitude = parseFloat(latitudeStr);
+export const parsePoint = (point: GeolocationPosition): Point => {
+  const longitude = point.coords.longitude;
+  const latitude = point.coords.latitude;
 
-  return { longitude, latitude };
+  return new Point({ longitude: longitude, latitude: latitude });
+};
+
+export const parsePoint2Map = (point: GeolocationPosition): number[] => {
+  const longitude = point.coords.longitude;
+  const latitude = point.coords.latitude;
+
+  return [longitude, latitude];
 };
