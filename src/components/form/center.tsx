@@ -7,7 +7,7 @@ interface CenterProps {
   className?: string;
 }
 
-export function Center({ children, isFullScreen = true, className = '' }: CenterProps) {
+export function Center({ children, isFullScreen = false, className = '' }: CenterProps) {
   const center = 'flex flex-row justify-center items-center';
   const fullScreenClass = 'w-screen h-screen';
   const centerElement = 'w-full h-full';

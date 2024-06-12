@@ -5,7 +5,7 @@ import { ArticleCard } from '~/components/ui';
 export default function Home() {
   const { t } = useTranslation();
   return (
-    <Center isFullScreen={false} className='flex-col my-10'>
+    <Center className='flex-col my-10'>
       <ArticleCard
         title={'test'}
         description={'adsfasdfasdf'}

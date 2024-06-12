@@ -9,6 +9,8 @@ const resources = {
       'app-address': 'Go Vap district Ho Chi Minh city',
       'common-or': 'Or',
       'common-second': 'seconds',
+      'common-submit': 'Submit',
+      'common-submit-success': 'Submitted successfully!',
       intro:
         'The Disease Control and Prevention Agency (DC&PA) is dedicated to protecting public health by monitoring and reporting on diseases. Our mission is to collect and disseminate critical health information to safeguard our nation against health threats. Through comprehensive data analysis and timely communication, we aim to inform public health decisions and ensure a healthier future for all.',
       'error-page-not-found': 'OPPS..., PAGE NOT FOUND!',
@@ -43,6 +45,14 @@ const resources = {
       'footer-privacy-policy': 'Privacy Policy',
       'footer-copyright': '© Copyright 2024 Team 15. All Rights Reserved.',
       'read-article': 'Read the article',
+      'type-of-disease': 'Type of disease',
+      'select-option': 'Select an option',
+      age: 'Age',
+      'full-name': 'Full name',
+      address: 'Address',
+      'current-location': 'Current location',
+      'get-current-location': 'Get current location',
+      'declare-disease-info': 'Declare disease information',
       'end-line': ''
     }
   },
@@ -53,6 +63,8 @@ const resources = {
       'app-address': 'quận Gò Vấp thành phố Hồ Chí Minh',
       'common-or': 'Hoặc',
       'common-second': 'giây',
+      'common-submit': 'Nộp',
+      'common-submit-success': 'Khai báo thành công!',
       intro:
         'Cục Quản lý và Phòng ngừa Dịch bệnh (DC&PA) cam kết bảo vệ sức khỏe cộng đồng bằng cách theo dõi và báo cáo về các bệnh tật. Sứ mệnh của chúng tôi là thu thập và phổ biến thông tin sức khỏe quan trọng để bảo vệ quốc gia khỏi các mối đe dọa sức khỏe. Thông qua phân tích dữ liệu toàn diện và truyền thông kịp thời, chúng tôi nhằm mục đích cung cấp thông tin cho các quyết định về y tế công cộng và đảm bảo một tương lai khỏe mạnh hơn cho tất cả mọi người.',
       'error-page-not-found': 'OPPS..., KHÔNG TÌM THẤY TRANG!',
@@ -87,6 +99,14 @@ const resources = {
       'footer-privacy-policy': 'Chính sách bảo mật',
       'footer-copyright': '© Copyright 2024 Team 15. All Rights Reserved.',
       'read-article': 'Đọc bài báo',
+      'type-of-disease': 'Loại bệnh',
+      'select-option': 'Tùy chọn',
+      age: 'Tuổi',
+      'full-name': 'Họ và tên',
+      address: 'Địa chỉ',
+      'current-location': 'Vị trí hiện tại',
+      'get-current-location': 'Lấy vị trí hiện tại',
+      'declare-disease-info': 'Khai báo thông tin dịch bệnh',
       'end-line': ''
     }
   }

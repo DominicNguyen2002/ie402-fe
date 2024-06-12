@@ -11,6 +11,7 @@ const APP_PATH = {
   otp: '/otp',
   article: '/article',
   'customer-sevice': '/customer-sevice',
+  'declaration-form': '/declaration-form',
   error: '*'
 };
 

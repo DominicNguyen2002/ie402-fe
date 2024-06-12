@@ -21,7 +21,7 @@ export default function ErrorPage() {
   };
 
   return (
-    <Center isFullScreen={true}>
+    <Center isFullScreen>
       <div className=' bg-white'>
         <div className='text-center'>
           <Lottie options={defaultOptions} height={300} width={300} />
@@ -32,7 +32,7 @@ export default function ErrorPage() {
           <div className='mt-10 flex items-center justify-center gap-x-6'>
             <a
               onClick={handleClick}
-              className='rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+              className='rounded-md bg-teal-900 hover:bg-teal-700 active:bg-teal-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2'
             >
               {t('error-back-home')}
             </a>
