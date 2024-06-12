@@ -3,7 +3,7 @@ import { ArticlePart, ArticleTitle } from '~/components/ui';
 
 export default function Article() {
   return (
-    <Center isFullScreen={false} className='flex-col my-10 px-16'>
+    <Center className='flex-col my-10 px-16'>
       <ArticleTitle
         title={'asdfasdfasd'}
         content={'asdfasdfasfd'}

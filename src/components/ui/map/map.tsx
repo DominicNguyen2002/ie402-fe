@@ -87,11 +87,11 @@ export function XMap() {
   return (
     <div className='relative w-full h-[700px] my-8'>
       {isLoading && (
-        <Center isFullScreen={false} className='absolute bg-opacity-80 z-10'>
+        <Center className='absolute bg-opacity-80 z-10'>
           <Lottie options={defaultOptions} height={100} width={100} />
         </Center>
       )}
-      <Center isFullScreen={false}>
+      <Center>
         <div className='w-[70%] h-full' ref={mapRef}></div>
       </Center>
     </div>

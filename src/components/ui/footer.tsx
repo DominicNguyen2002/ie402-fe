@@ -125,11 +125,11 @@ export function Footer() {
           <div className='border-spacing-1'>
             <div className='relative w-[400px] h-[300px]'>
               {isLoading && (
-                <Center isFullScreen={false} className='absolute bg-opacity-80 z-10'>
+                <Center className='absolute bg-opacity-80 z-10'>
                   <Lottie options={defaultOptions} height={100} width={100} />
                 </Center>
               )}
-              <Center isFullScreen={false}>
+              <Center>
                 <div className='w-[90%] h-full' ref={mapRef}></div>
               </Center>
             </div>
