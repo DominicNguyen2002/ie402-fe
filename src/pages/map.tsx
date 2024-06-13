@@ -11,7 +11,7 @@ export default function Map() {
   const [selectedProvince, setSelectedProvince] = useState<string>();
   const [selectedDistrict, setSelectedDistrict] = useState<string>();
   const [selectedWard, setSelectedWard] = useState<string>();
-  const [selectedState, setSelectedState] = useState<string>();
+  const [selectedState, setSelectedState] = useState<number>(1);
   const [selectedDisease, setSelectedDisease] = useState<string>();
   const [position, setPosition] = useState<GeolocationPosition>({
     coords: {
@@ -27,16 +27,11 @@ export default function Map() {
   });
   const [error, setError] = useState<string | null>(null);
   const [selectedLevel, setSelectedLevel] = useState<number>(1);
-
   const [options] = useState(['Covid-19']);
   const [stateOptions] = useState([t('being-sick'), t('recovered'), t('passed-away-sickness')]);
-  const [province] = useState(adminstrative.map((province) => province.provinceName));
+  const province = adminstrative.map((province) => province.provinceName);
   const [district, setDistrict] = useState<string[]>([]);
   const [ward, setWard] = useState<string[]>([]);
-
-  const handleSelect = (option: string) => {
-    console.log('Selected option:', option);
-  };
 
   const showPosition = (position: GeolocationPosition) => {
     setPosition(position);
@@ -63,31 +58,25 @@ export default function Map() {
       navigator.geolocation.getCurrentPosition(showPosition, showError);
       setPermission(false);
     }
-
-    // const _district = adminstrative.find((item) => item.provinceName === selectedProvince);
-    // setDistrict(_district ? _district?.districts.map((district) => district.districtName) : []);
-
-    // const _ward = _district?.districts.find((item) => item.districtName === selectedDistrict)?.wards;
-    // setDistrict(_ward ? _ward?.map((ward) => ward.wardName) : []);
   }, [position]);
   return (
     <div className='flex justify-between items-start'>
-      <div className='flex justify-between items-center flex-col w-[700px] bg-slate-50 mr-5 p-3'>
+      <div className='flex justify-between items-center flex-col w-[800px] bg-slate-50 mr-5 p-3'>
         <h1 className='text-4xl my-6 text-teal-700'>{t('filter-by')}</h1>
 
         <div className='flex items-center justify-between mb-5 text-lg'>
-          <h3 className='w-[300px]'>{t('type-of-disease')}</h3>
+          <h3 className='w-[400px]'>{t('type-of-disease')}</h3>
           <Dropdown
             className='w-full p-2 border border-gray-400 text-sm'
             options={options}
             onSelect={(option) => {
-              console.log('Selected option:', option);
+              setSelectedDisease(option);
             }}
           />
         </div>
 
         <div className='flex items-center justify-between mb-5 text-lg'>
-          <h3 className='w-[300px]'>{t('province')}</h3>
+          <h3 className='w-[400px]'>{t('province')}</h3>
           <Dropdown
             className='w-full p-2 border border-gray-400 text-sm'
             options={province}
@@ -103,7 +92,7 @@ export default function Map() {
         </div>
 
         <div className='flex items-center justify-between mb-5 text-lg'>
-          <h3 className='w-[300px]'>{t('district')}</h3>
+          <h3 className='w-[400px]'>{t('district')}</h3>
           <Dropdown
             className='w-full p-2 border border-gray-400 text-sm'
             disabled={selectedLevel < 2}
@@ -121,7 +110,7 @@ export default function Map() {
         </div>
 
         <div className='flex items-center justify-between mb-5 text-lg'>
-          <h3 className='w-[300px]'>{t('ward')}</h3>
+          <h3 className='w-[400px]'>{t('ward')}</h3>
           <Dropdown
             className='w-full p-2 border border-gray-400 text-sm'
             disabled={selectedLevel < 3}
@@ -133,15 +122,81 @@ export default function Map() {
         </div>
 
         <div className='flex items-center justify-between mb-5 text-lg'>
-          <h3 className='w-[300px]'>{t('state')}</h3>
+          <h3 className='w-[400px]'>{t('state')}</h3>
           <Dropdown
             className='w-full p-2 border border-gray-400 text-sm'
             options={stateOptions}
-            onSelect={handleSelect}
+            onSelect={(option) => {
+              switch (option) {
+                case stateOptions[0]: {
+                  setSelectedState(1);
+                  break;
+                }
+                case stateOptions[1]: {
+                  setSelectedState(0);
+                  break;
+                }
+                default: {
+                  setSelectedState(-1);
+                  break;
+                }
+              }
+            }}
           />
         </div>
       </div>
-      <XMap className='w-full h-[500px] bg-slate-950' center={position} />
+      <XMap
+        className='w-full h-[500px]'
+        center={position}
+        state={selectedState}
+        polygon={[
+          [
+            [105.1566, 10.8287],
+            [105.1601, 10.7814],
+            [105.1395, 10.7712],
+            [105.1354, 10.7665],
+            [105.137, 10.752],
+            [105.1246, 10.7098],
+            [105.1147, 10.7197],
+            [105.1012, 10.7441],
+            [105.0979, 10.7653],
+            [105.0888, 10.7607],
+            [105.0751, 10.777],
+            [105.0643, 10.7813],
+            [105.0613, 10.7986],
+            [105.0569, 10.8016],
+            [105.0586, 10.8191],
+            [105.0357, 10.8675],
+            [105.0294, 10.8924],
+            [105.045, 10.9016],
+            [105.0418, 10.9113],
+            [105.0449, 10.9144],
+            [105.0533, 10.9165],
+            [105.0533, 10.9219],
+            [105.0508, 10.925],
+            [105.0538, 10.9304],
+            [105.067, 10.9388],
+            [105.071, 10.9394],
+            [105.0791, 10.9364],
+            [105.0784, 10.9424],
+            [105.0802, 10.9546],
+            [105.0835, 10.9571],
+            [105.0957, 10.9567],
+            [105.1123, 10.9621],
+            [105.1166, 10.9606],
+            [105.1179, 10.9497],
+            [105.1167, 10.9442],
+            [105.1037, 10.9276],
+            [105.1022, 10.9227],
+            [105.1067, 10.9192],
+            [105.1323, 10.9215],
+            [105.133, 10.9168],
+            [105.1286, 10.9054],
+            [105.1511, 10.8987],
+            [105.1566, 10.8287]
+          ]
+        ]}
+      />
     </div>
   );
 }
