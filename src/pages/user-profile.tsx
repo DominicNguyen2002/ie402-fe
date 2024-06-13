@@ -13,7 +13,7 @@ export default function UserProfile() {
         <div className="user-profile py-2 w-[80%] mx-auto mt-5">
             <h3 className='text-center text-xl font-semibold'>HỒ SƠ CỦA TÔI</h3>
             <div className="user-profile__header flex items-baseline justify-between">
-                <span onClick={() => setDisabled(false)} className="text-base font-medium transition-colors duration-200 cursor-pointer hover:text-text2 ml-auto">
+                <span onClick={() => setDisabled(false)} className="text-base font-semibold transition-colors duration-200 cursor-pointer hover:text-text2 ml-auto">
                     Chỉnh sửa thông tin
                 </span>
             </div>
@@ -32,7 +32,7 @@ export default function UserProfile() {
                             <Input
                                 placeholder="Họ và tên"
                                 disabled={disabled}
-                                className="h-9 text-sm font-medium text-date"
+                                className="h-9 text-sm font-semibold text-date"
                             />
                         </Form.Item>
                         <Form.Item
@@ -42,7 +42,7 @@ export default function UserProfile() {
                             <Input
                                 placeholder="Địa chỉ"
                                 disabled={disabled}
-                                className="h-9 text-sm font-medium text-date"
+                                className="h-9 text-sm font-semibold text-date"
                             />
                         </Form.Item>
                     </div>
@@ -65,7 +65,7 @@ export default function UserProfile() {
                             <Input
                                 placeholder="Email của bạn"
                                 disabled={disabled}
-                                className="h-9 text-sm font-medium text-date"
+                                className="h-9 text-sm font-semibold text-date"
                             />
                         </Form.Item>
                     </div>
@@ -77,7 +77,7 @@ export default function UserProfile() {
                             <Input
                                 placeholder="Số điện thoại"
                                 disabled={disabled}
-                                className="h-9 text-sm font-medium text-date"
+                                className="h-9 text-sm font-semibold text-date"
                             />
                         </Form.Item>
                         <Form.Item
@@ -87,7 +87,7 @@ export default function UserProfile() {
                             <Select
                                 placeholder="Giới tính"
                                 disabled={disabled}
-                                className="h-9 text-sm font-medium text-date"
+                                className="h-9 text-sm font-semibold text-date"
                             >
                                 <Select.Option value="Nam">Nam</Select.Option>
                                 <Select.Option value="Nữ">Nữ</Select.Option>
