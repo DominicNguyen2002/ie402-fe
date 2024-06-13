@@ -10,7 +10,6 @@ import GraphicsLayer from '@arcgis/core/layers/GraphicsLayer';
 import placeholder from '~/assets/images/placeholder.png';
 import PictureMarkerSymbol from '@arcgis/core/symbols/PictureMarkerSymbol.js';
 import Point from '@arcgis/core/geometry/Point';
-import { parsePoint } from '~/utils/point.util';
 import MapView from '@arcgis/core/views/MapView';
 import Map from '@arcgis/core/Map';
 import PopupTemplate from '@arcgis/core/PopupTemplate';
@@ -51,13 +50,12 @@ export function Footer() {
 
     const graphicsLayer = new GraphicsLayer();
 
-    const _point = parsePoint('[10.821353493741581,106.67698403739985]');
-    const point = new Point({ longitude: _point.longitude, latitude: _point.latitude });
+    const point = new Point({ longitude: 106.67698403739985, latitude: 10.821353493741581 });
 
     const pointSymbol = new PictureMarkerSymbol({
       url: placeholder,
-      width: '64px',
-      height: '64px'
+      width: '55px',
+      height: '55px'
     });
     const name = t('app-title');
     const address = t('app-address');

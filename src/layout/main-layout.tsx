@@ -5,7 +5,9 @@ export default function MainLayout() {
   return (
     <div>
       <Header />
-      <Outlet />
+      <div className='mx-8 my-5'>
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );
