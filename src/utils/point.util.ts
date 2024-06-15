@@ -1,15 +1,5 @@
 import Point from '@arcgis/core/geometry/Point';
 
-export const parsePoint = (point: GeolocationPosition): Point => {
-  const longitude = point.coords.longitude;
-  const latitude = point.coords.latitude;
+export const parsePoint = (point: IPoint): Point => new Point({ longitude: point.longitude, latitude: point.latitude });
 
-  return new Point({ longitude: longitude, latitude: latitude });
-};
-
-export const parsePoint2Map = (point: GeolocationPosition): number[] => {
-  const longitude = point.coords.longitude;
-  const latitude = point.coords.latitude;
-
-  return [longitude, latitude];
-};
+export const parsePoint2Map = (point: IPoint): number[] => [point.longitude, point.latitude];

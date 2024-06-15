@@ -13,17 +13,9 @@ export default function Map() {
   const [selectedWard, setSelectedWard] = useState<string>();
   const [selectedState, setSelectedState] = useState<number>(1);
   const [selectedDisease, setSelectedDisease] = useState<string>();
-  const [position, setPosition] = useState<GeolocationPosition>({
-    coords: {
-      longitude: 106.67698403739985,
-      latitude: 15.821353493741581,
-      altitude: null,
-      accuracy: 10,
-      altitudeAccuracy: null,
-      heading: null,
-      speed: null
-    },
-    timestamp: Date.now()
+  const [position, setPosition] = useState<IPoint>({
+    longitude: 106.67698403739985,
+    latitude: 15.821353493741581
   });
   const [error, setError] = useState<string | null>(null);
   const [selectedLevel, setSelectedLevel] = useState<number>(1);
@@ -34,7 +26,10 @@ export default function Map() {
   const [ward, setWard] = useState<string[]>([]);
 
   const showPosition = (position: GeolocationPosition) => {
-    setPosition(position);
+    setPosition({
+      longitude: position.coords.longitude,
+      latitude: position.coords.latitude
+    });
   };
 
   const showError = (error: GeolocationPositionError) => {
@@ -113,7 +108,8 @@ export default function Map() {
           <h3 className='w-[400px]'>{t('ward')}</h3>
           <Dropdown
             className='w-full p-2 border border-gray-400 text-sm'
-            disabled={selectedLevel < 3}
+            // disabled={selectedLevel < 3}
+            disabled
             options={ward}
             onSelect={(option) => {
               setSelectedWard(option);

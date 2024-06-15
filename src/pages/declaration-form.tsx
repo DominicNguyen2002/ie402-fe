@@ -6,7 +6,7 @@ import Button from '~/components/form/button/button';
 import Dropdown from '~/components/form/dropdown';
 
 interface DeclarationFormProps {
-  user: IUser;
+  user?: IUser;
 }
 
 export default function DeclarationForm(params: DeclarationFormProps) {
@@ -63,7 +63,7 @@ export default function DeclarationForm(params: DeclarationFormProps) {
 
   return (
     <Center className='my-6 flex-col'>
-      <h1 className='text-4xl my-6 text-teal-700'>{t('declare-disease-info')}</h1>
+      <h1 className='text-4xl my-6'>{t('declare-disease-info')}</h1>
       <div className='w-[600px]'>
         <form onSubmit={handleSubmit}>
           <div className='flex items-center justify-start mb-3 text-lg'>

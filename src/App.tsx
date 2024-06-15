@@ -11,6 +11,7 @@ import ForgotPassword from './pages/forgot-password';
 import OTP from './pages/otp';
 import UserProfile from './pages/user-profile';
 import DeclarationForm from './pages/declaration-form';
+import ChangePassword from './pages/change-password';
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
             <Route path={APP_PATH['user-profile']} element={<UserProfile />} />
             <Route path={APP_PATH.map} element={<Map />} />
             <Route path={APP_PATH['declaration-form']} element={<DeclarationForm />} />
+            <Route path={APP_PATH['change-password']} element={<ChangePassword />} />
           </Route>
           <Route path={APP_PATH.error} element={<ErrorPage />} />
         </Routes>
