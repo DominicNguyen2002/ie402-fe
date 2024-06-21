@@ -35,7 +35,7 @@ export default function OTP() {
     }
   };
 
-  const startCountdown = () => {
+  const sendAgain = () => {
     setTimeLeft(30);
     setIsActive(true);
   };
@@ -57,7 +57,7 @@ export default function OTP() {
   }, [isActive, timeLeft]);
 
   return (
-    <Center className='flex-col bg-white'>
+    <Center isFullScreen className='flex-col bg-white'>
       <h1 className='w-full max-w-[500px] mx-auto text-4xl text-teal-700 font-extrabold text-center mb-3'>
         {t('app-title')}
       </h1>
@@ -104,7 +104,7 @@ export default function OTP() {
             {t('sign-dont-recieve-otp')}{' '}
             <span
               className='font-semibold underline cursor-pointer underline-offset-2 hover:text-gray-500'
-              onClick={startCountdown}
+              onClick={sendAgain}
             >
               {t('sign-send-again')}
             </span>

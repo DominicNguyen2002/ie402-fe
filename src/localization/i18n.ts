@@ -58,10 +58,13 @@ const resources = {
       district: 'District',
       province: 'Province',
       state: 'State',
+      time: 'Time',
       default: 'Default',
       'being-sick': 'Being sick',
       recovered: 'Recovered',
       'passed-away-sickness': 'Passed away due to the sickness',
+      'phone-password-not-empty': 'Số điện thoại và mật khẩu không được để trống',
+      'phone-password-incorrect': 'Password or phone is incorrect!',
       'end-line': ''
     }
   },
@@ -121,10 +124,42 @@ const resources = {
       district: 'Quận / Huyện',
       province: 'Tỉnh / Thành phố',
       state: 'Trạng thái',
+      time: 'Ngày',
       default: 'Mặc định',
       'being-sick': 'Đang bị bệnh',
       recovered: 'Đã hết bệnh',
       'passed-away-sickness': 'Mất do bệnh',
+      'phone-password-not-empty': 'Số điện thoại và mật khẩu không được để trống!',
+      'phone-password-incorrect': 'Số điện thoại hoặc mật khẩu không chính xác!',
+      'password-not-match': 'Mật khẩu không khớp',
+      'sign-in-success': 'Đăng nhập thành công',
+      'sign-up-success': 'Đăng kí thành công',
+      'sign-up-failed': 'Đăng kí thất bại',
+      profile: 'Trang cá nhân',
+      'change-password': 'Thay đổi mật khẩu',
+      'change-password-succes': 'Thay đổi mật khẩu thành công',
+      'change-password-failed': 'Thay đổi mật khẩu thất bại',
+      'declare-disease': 'Khai báo thông tin dịch bệnh',
+      'get-new-password': 'Lấy lại mật khẩu',
+      'get-new-password-des': 'Lấy lại mật khẩu tài khoản của bạn',
+      'confirm-via-otp': 'Xác nhận bằng mã OTP',
+      'action-failed': 'Hành động không thể thực hiện hoặc lỗi!',
+      'old-password': 'Mật khẩu hiện tại',
+      'new-password': 'Mật khẩu mới',
+      change: 'Thay đổi',
+      'field-not-empty': 'Các trường không được để trống!',
+      edit: 'Chỉnh sửa',
+      birthday: 'Ngày sinh',
+      email: 'Email',
+      gender: 'Giới tính',
+      'your-profile': 'HỒ SƠ CỦA TÔI',
+      cancel: 'Hủy',
+      disease: 'Dịch bệnh',
+      currently: 'Hiện nay',
+      'disease-situation': ' Tình hình Dịch bệnh ',
+      follow: 'Theo dỗi',
+      'see-statistics': 'Xem thống kê',
+
       'end-line': ''
     }
   }
@@ -132,7 +167,7 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: 'vi',
+  lng: localStorage.getItem('language') || 'vi',
   interpolation: {
     escapeValue: false
   }

@@ -13,12 +13,15 @@ import clsx from 'clsx';
 import { parsePoint, parsePoint2Map } from '~/utils/point.util';
 import Polygon from '@arcgis/core/geometry/Polygon';
 import SimpleFillSymbol from '@arcgis/core/symbols/SimpleFillSymbol';
+import { PopupPoint } from '~/components/form/popup/popup-point';
 
 interface MapProps {
   className?: string;
-  center: GeolocationPosition;
+  center: IPoint;
   state: number;
   polygon?: number[][][];
+  zoom?: number;
+  data?: IUserDisease[];
 }
 export function XMap(params: MapProps) {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -57,10 +60,21 @@ export function XMap(params: MapProps) {
       map: map,
       container: mapRef.current,
       center: parsePoint2Map(params.center),
-      zoom: 13
+      zoom: params.zoom ?? 8
     });
 
     const graphicsLayer = new GraphicsLayer();
+
+    const polygon = new Polygon({
+      rings: params.polygon
+    });
+
+    const fillSymbol = new SimpleFillSymbol({
+      outline: {
+        color: handleState(),
+        width: 3
+      }
+    });
 
     const pointSymbol = new PictureMarkerSymbol({
       url: placeholder,
@@ -72,22 +86,9 @@ export function XMap(params: MapProps) {
       Name: 'My Point',
       Description: 'This is a point on the map'
     };
-
     const popupTemplate = new PopupTemplate({
       title: '{Name}',
       content: '{Description}'
-    });
-
-    const polygon = new Polygon({
-      rings: params.polygon
-    });
-
-    const fillSymbol = new SimpleFillSymbol({
-      color: handleState(),
-      outline: {
-        color: [255, 255, 255],
-        width: 1
-      }
     });
 
     const polygonGraphic = new Graphic({

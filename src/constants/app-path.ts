@@ -2,7 +2,7 @@ const APP_PATH = {
   home: '/',
   'sign-in': '/sign-in',
   'sign-up': '/sign-up',
-  'forgot-password':'/forgot-password',
+  'forgot-password': '/forgot-password',
   'privacy-policy': '/privacy-policy',
   'terms-condition': '/terms-condition',
   'user-profile': '/user-profile',
@@ -10,8 +10,10 @@ const APP_PATH = {
   map: '/map',
   otp: '/otp',
   article: '/article',
+  disease: '/disease',
   'customer-sevice': '/customer-sevice',
   'declaration-form': '/declaration-form',
+  'change-password': '/change-password',
   error: '*'
 };
 

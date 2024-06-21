@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { Center } from '~/components/form';
@@ -7,40 +8,42 @@ import APP_PATH from '~/constants/app-path';
 
 export default function SignUp() {
   const { t } = useTranslation();
-  const [username, setUsername] = useState<string>('');
+  const [phone, setPhone] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [passwordConfirm, setPasswordConfirm] = useState<string>('');
   const [searchParams, setSearchParams] = useSearchParams();
   const [user, setUser] = useState<any>(null);
   const navigate = useNavigate();
-  const google = () => {
-    window.open('http://localhost:5500/api/v1/authenticate/google', '_self');
-  };
+  const google = () => {};
 
-  const loginButton = async (e: React.FormEvent<HTMLFormElement>) => {
+  const signUpBtn = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
-      e.preventDefault();
-      const redirectURL = searchParams.get('redirectUrL');
-
-      if (username === '' || password === '') {
-        // toast.error('Tên đăng nhập và mật khẩu không được bỏ trống');
+       e.preventDefault();
+       const redirectURL = searchParams.get('redirectUrL');
+      if (phone === '' || password === '') {
+        toast.error(t('phone-password-not-empty'));
         return;
       }
-      const account: AuthenticateLogin = {
-        username,
+      if (passwordConfirm !== password) {
+        toast.error(t('password-not-match'));
+        return;
+      }
+      const account: IUserSign = {
+        phone,
         password
       };
-      console.log(account);
-      // const res = await authenticateApi.login(account);
-      // Cookies.set('Authorization', res.token, { expires: 7 });
-      // toast.success(`Welcome ${res.name} back!!`);
-      navigate(redirectURL ? redirectURL : '/');
+      toast.success(t('sign-up-success'));
+      setTimeout(() => {
+        navigate(redirectURL ? redirectURL : APP_PATH.home);
+      }, 4000);
     } catch (error) {
-      // toast.error('Password or Username is not correct!');
+      toast.error(t('sign-up-failed'));
     }
   };
 
   return (
-    <Center className='flex-col bg-white'>
+    <Center isFullScreen className='flex-col bg-white'>
+      <Toaster />
       <h1 className='w-full max-w-[500px] mx-auto text-4xl text-teal-700 font-extrabold text-center mb-3'>
         {t('app-title')}
       </h1>
@@ -50,13 +53,13 @@ export default function SignUp() {
           <p className='mb-2 text-base'>{t('sign-register')}</p>
         </div>
         <div className='flex flex-col w-full'>
-          <form onSubmit={loginButton} className='flex flex-col items-center flex-1'>
+          <form onSubmit={signUpBtn} className='flex flex-col items-center flex-1'>
             <input
               className='w-full mb-[20px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] border-2 focus:border-black'
               type='text'
               placeholder={t('sign-phone-title')}
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
             />
             <input
               className='w-full mb-[20px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] border-2 focus:border-black'
@@ -69,8 +72,8 @@ export default function SignUp() {
               className='w-full mb-[20px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] border-2 focus:border-black'
               type='password'
               placeholder={t('confirm-password')}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={passwordConfirm}
+              onChange={(e) => setPasswordConfirm(e.target.value)}
             />
             <Button
               type='submit'

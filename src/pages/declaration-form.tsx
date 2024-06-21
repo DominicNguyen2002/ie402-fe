@@ -1,24 +1,21 @@
 import { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
-import { ToastContainer, toast } from 'react-toastify';
+import { userDiseaseApi } from '~/api/user-disease.api';
 import { Center } from '~/components/form';
 import Button from '~/components/form/button/button';
 import Dropdown from '~/components/form/dropdown';
+import { useDiseaseState } from '~/context/disease.context';
+import { useUserState } from '~/context/user.context';
 
-interface DeclarationFormProps {
-  user: IUser;
-}
-
-export default function DeclarationForm(params: DeclarationFormProps) {
-  const [user] = useState<IUser>({
-    name: 'Nguyen Van A',
-    phone: '0123456789',
-    birthday: '01/01/1997',
-    address: 'TP HCM',
-    age: 22
-  });
+export default function DeclarationForm() {
+  const { user } = useUserState();
+  const { diseases } = useDiseaseState();
   const [location, setLocation] = useState<string>('');
+  const [diseaseId, setDiseaseId] = useState<string>('');
+  const [state, setState] = useState<number>(1);
   const { t } = useTranslation();
+  const options = ['Đã mất', 'Đã hết bệnh', 'Chưa bệnh', 'Đang bị bệnh'];
 
   const getCurrentLocation = () => {
     if (navigator.geolocation) {
@@ -50,20 +47,53 @@ export default function DeclarationForm(params: DeclarationFormProps) {
     }
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    toast(t('common-submit-success'));
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    try {
+      event.preventDefault();
+      await userDiseaseApi.declare({
+        userId: user?.id || '',
+        diseaseId: diseaseId,
+        location: location,
+        state: state,
+        status: 0
+      });
+      toast(t('common-submit-success'));
+    } catch (error) {
+      toast.error(`Error with ${error}`);
+    }
   };
 
-  const options = ['Covid-19'];
-
   const handleSelect = (option: string) => {
-    console.log('Selected option:', option);
+    const selectedDisease = diseases.find((item) => item.name === option);
+    if (selectedDisease) {
+      setDiseaseId(selectedDisease.id);
+    }
+  };
+  const handleSelectState = (option: string) => {
+    switch (option) {
+      case options[0]: {
+        setState(-2);
+        break;
+      }
+      case options[1]: {
+        setState(-1);
+        break;
+      }
+      case options[2]: {
+        setState(0);
+        break;
+      }
+      default: {
+        setState(1);
+        break;
+      }
+    }
   };
 
   return (
     <Center className='my-6 flex-col'>
-      <h1 className='text-4xl my-6 text-teal-700'>{t('declare-disease-info')}</h1>
+      <Toaster />
+      <h1 className='text-4xl my-6'>{t('declare-disease-info')}</h1>
       <div className='w-[600px]'>
         <form onSubmit={handleSubmit}>
           <div className='flex items-center justify-start mb-3 text-lg'>
@@ -74,7 +104,7 @@ export default function DeclarationForm(params: DeclarationFormProps) {
               className='w-full p-2 border border-gray-400'
               type='text'
               id='full-name'
-              value={user.name}
+              value={user?.name}
               readOnly
             />
           </div>
@@ -83,14 +113,20 @@ export default function DeclarationForm(params: DeclarationFormProps) {
             <label htmlFor='phone' className='w-[200px]'>
               {t('sign-phone-title')}
             </label>
-            <input className='w-full p-2 border border-gray-400' type='text' id='phone' value={user.phone} readOnly />
+            <input className='w-full p-2 border border-gray-400' type='text' id='phone' value={user?.phone} readOnly />
           </div>
 
           <div className='flex items-center justify-between mb-3 text-lg'>
             <label htmlFor='age' className='w-[200px]'>
-              {t('age')}
+              {t('birthday')}
             </label>
-            <input className='w-full p-2 border border-gray-400' type='number' id='age' value={user.age} readOnly />
+            <input
+              className='w-full p-2 border border-gray-400'
+              type='number'
+              id='age'
+              value={user?.birthday}
+              readOnly
+            />
           </div>
 
           <div className='flex items-center justify-between mb-3 text-lg'>
@@ -101,7 +137,7 @@ export default function DeclarationForm(params: DeclarationFormProps) {
               className='w-full p-2 border border-gray-400'
               type='text'
               id='address'
-              value={user.address}
+              value={user?.address}
               readOnly
             />
           </div>
@@ -133,7 +169,16 @@ export default function DeclarationForm(params: DeclarationFormProps) {
 
           <div className='flex items-center justify-between mb-3 text-lg'>
             <h3 className='w-[200px]'>{t('type-of-disease')}</h3>
-            <Dropdown className='w-full p-2 border border-gray-400' options={options} onSelect={handleSelect} />
+            <Dropdown
+              className='w-full p-2 border border-gray-400'
+              options={diseases.map((item) => item.name)}
+              onSelect={handleSelect}
+            />
+          </div>
+
+          <div className='flex items-center justify-between mb-3 text-lg'>
+            <h3 className='w-[200px]'>State</h3>
+            <Dropdown className='w-full p-2 border border-gray-400' options={options} onSelect={handleSelectState} />
           </div>
 
           <Button
@@ -143,7 +188,6 @@ export default function DeclarationForm(params: DeclarationFormProps) {
             title={t('common-submit')}
           ></Button>
         </form>
-        <ToastContainer />
       </div>
     </Center>
   );

@@ -3,7 +3,7 @@ import { Center } from '~/components/form';
 interface ArticlePartProps {
   heading: string;
   content: string;
-  image: string;
+  image?: string;
   index: number;
 }
 
@@ -11,9 +11,13 @@ export const ArticlePart: React.FC<ArticlePartProps> = ({ heading, content, imag
   return (
     <div className='w-full'>
       <h2 className='text-3xl mb-2.5'>{`${index + 1}. ${heading}`}</h2>
-      <Center>
-        <img src={image} alt={`Image heading ${index}`} className='w-[20%] h-auto' />
-      </Center>
+      {image != null ? (
+        <Center>
+          <img src={image} alt={`Image heading ${index}`} className='w-[20%] h-auto' />
+        </Center>
+      ) : (
+        <div></div>
+      )}
       <p className='text-xl text-gray-700 mb-2.5 text-justify'>{content}</p>
     </div>
   );
