@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import Button from '../form/button/button';
+import APP_PATH from '~/constants/app-path';
+import { truncateString } from '~/utils/string.util';
 
 interface Props {
   _id: string;
@@ -12,13 +14,13 @@ export default function DiseaseCard({ title, image, _id, subTitle }: Props) {
   const navigate = useNavigate();
   return (
     <div className='grid grid-cols-3 bg-scarlet w-[445px] h-[250px]'>
-      {/* <div className='grid grid-cols-3 bg-slate-600 w-[400px] h-[250px]'> */}
       <div className='pt-[35px] pl-[30px] col-span-2'>
         <p className='capitalize text-body-1 mb-[25px] text-dark-slate-gray'>{title}</p>
-        <h3 className='text-heading-8 mb-[15px]'>{subTitle}</h3>
+        <h3 className='text-heading-8 mb-[15px] h-[30%]'>{truncateString(subTitle, 80)}</h3>
         <Button
           onClick={() => {
-            navigate(`/shop?diseaseName=${title}`);
+            navigate(`${APP_PATH.disease}/${_id}`);
+            window.scrollTo(0, 0);
           }}
           title='Xem ngay'
           variant='secondary'

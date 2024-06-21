@@ -167,7 +167,7 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: 'vi',
+  lng: localStorage.getItem('language') || 'vi',
   interpolation: {
     escapeValue: false
   }

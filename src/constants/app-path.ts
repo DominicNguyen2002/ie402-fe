@@ -10,6 +10,7 @@ const APP_PATH = {
   map: '/map',
   otp: '/otp',
   article: '/article',
+  disease: '/disease',
   'customer-sevice': '/customer-sevice',
   'declaration-form': '/declaration-form',
   'change-password': '/change-password',

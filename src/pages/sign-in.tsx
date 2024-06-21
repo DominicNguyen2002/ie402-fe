@@ -1,24 +1,22 @@
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import { Center } from '~/components/form';
 import Button from '~/components/form/button/button';
 import { useState } from 'react';
 import APP_PATH from '~/constants/app-path';
 import toast, { Toaster } from 'react-hot-toast';
+import { authApi } from '~/api/auth.api';
 
 export default function SignIn() {
   const { t } = useTranslation();
   const [phone, setPhone] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [user, setUser] = useState<any>(null);
   const navigate = useNavigate();
   const google = () => {};
 
   const signInBtn = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
-      const redirectURL = searchParams.get('redirectUrL');
       if (phone === '' || password === '') {
         toast.error(t('phone-password-not-empty'));
         return;
@@ -27,9 +25,11 @@ export default function SignIn() {
         phone,
         password
       };
-      toast.success(t('sign-in-success'));
+      const res = await authApi.signIn(account);
+      localStorage.setItem('userId', res.id);
+      toast.success(`${t('sign-in-success')} ${res.id}`);
       setTimeout(() => {
-        navigate(redirectURL ? redirectURL : APP_PATH.home);
+        navigate(APP_PATH.home);
       }, 4000);
     } catch (error) {
       toast.error(t('phone-password-incorrect'));

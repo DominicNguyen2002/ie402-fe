@@ -3,11 +3,20 @@ import { useNavigate } from 'react-router-dom';
 import APP_PATH from '~/constants/app-path';
 import { Popover, PopoverButton, PopoverPanel, Transition } from '@headlessui/react';
 import { UserIcon } from '../icon';
+import { useUserDispatch } from '~/context/user.context';
+import toast from 'react-hot-toast';
 
 export default function SubMenu() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const dispatch = useUserDispatch();
 
+  const handleLogout = () => {
+    localStorage.removeItem('userId');
+    dispatch({ type: 'LOGOUT' });
+    navigate(APP_PATH['sign-in']);
+    toast.success('Đăng xuất thành công.');
+  };
   return (
     <Popover>
       <PopoverButton className='text-xl font-semibold text-white/50 focus:outline-none data-[active]:text-white data-[hover]:text-white data-[focus]:outline-1 data-[focus]:outline-white mr-3'>
@@ -45,7 +54,7 @@ export default function SubMenu() {
               {t('declare-disease')}
             </button>
             <button
-              onClick={() => navigate(APP_PATH['user-profile'])}
+              onClick={handleLogout}
               className='text-sm hover:bg-dark-slate-gray hover:text-white text-gray-900 group flex w-full items-center px-4 py-2 whitespace-nowrap'
             >
               {t('sign-sign-out')}

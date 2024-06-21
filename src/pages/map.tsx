@@ -1,25 +1,26 @@
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import Button from '~/components/form/button/button';
 import Dropdown from '~/components/form/dropdown';
 import { XMap } from '~/components/ui';
 import { adminstrative } from '~/constants/adminstrative';
+import { useDiseaseState } from '~/context/disease.context';
 
 export default function Map() {
   const { t } = useTranslation();
-
   const [permission, setPermission] = useState<boolean>(true);
   const [selectedProvince, setSelectedProvince] = useState<string>();
   const [selectedDistrict, setSelectedDistrict] = useState<string>();
   const [selectedWard, setSelectedWard] = useState<string>();
   const [selectedState, setSelectedState] = useState<number>(1);
   const [selectedDisease, setSelectedDisease] = useState<string>();
+  const { diseases } = useDiseaseState();
   const [position, setPosition] = useState<IPoint>({
     longitude: 106.67698403739985,
     latitude: 15.821353493741581
   });
   const [error, setError] = useState<string | null>(null);
   const [selectedLevel, setSelectedLevel] = useState<number>(1);
-  const [options] = useState(['Covid-19']);
   const [stateOptions] = useState([t('being-sick'), t('recovered'), t('passed-away-sickness')]);
   const province = adminstrative.map((province) => province.provinceName);
   const [district, setDistrict] = useState<string[]>([]);
@@ -48,7 +49,7 @@ export default function Map() {
     }
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (permission && navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition, showError);
       setPermission(false);
@@ -63,7 +64,7 @@ export default function Map() {
           <h3 className='w-[400px]'>{t('type-of-disease')}</h3>
           <Dropdown
             className='w-full p-2 border border-gray-400 text-sm'
-            options={options}
+            options={diseases.map((item) => item.name)}
             onSelect={(option) => {
               setSelectedDisease(option);
             }}
@@ -108,7 +109,6 @@ export default function Map() {
           <h3 className='w-[400px]'>{t('ward')}</h3>
           <Dropdown
             className='w-full p-2 border border-gray-400 text-sm'
-            // disabled={selectedLevel < 3}
             disabled
             options={ward}
             onSelect={(option) => {
@@ -140,59 +140,16 @@ export default function Map() {
             }}
           />
         </div>
+        <Button
+          onClick={() => {
+            window.scrollTo(0, 0);
+          }}
+          title='Filter'
+          variant='secondary'
+          className='px-5 py-2 my-3 capitalize'
+        />
       </div>
-      <XMap
-        className='w-full h-[500px]'
-        center={position}
-        state={selectedState}
-        polygon={[
-          [
-            [105.1566, 10.8287],
-            [105.1601, 10.7814],
-            [105.1395, 10.7712],
-            [105.1354, 10.7665],
-            [105.137, 10.752],
-            [105.1246, 10.7098],
-            [105.1147, 10.7197],
-            [105.1012, 10.7441],
-            [105.0979, 10.7653],
-            [105.0888, 10.7607],
-            [105.0751, 10.777],
-            [105.0643, 10.7813],
-            [105.0613, 10.7986],
-            [105.0569, 10.8016],
-            [105.0586, 10.8191],
-            [105.0357, 10.8675],
-            [105.0294, 10.8924],
-            [105.045, 10.9016],
-            [105.0418, 10.9113],
-            [105.0449, 10.9144],
-            [105.0533, 10.9165],
-            [105.0533, 10.9219],
-            [105.0508, 10.925],
-            [105.0538, 10.9304],
-            [105.067, 10.9388],
-            [105.071, 10.9394],
-            [105.0791, 10.9364],
-            [105.0784, 10.9424],
-            [105.0802, 10.9546],
-            [105.0835, 10.9571],
-            [105.0957, 10.9567],
-            [105.1123, 10.9621],
-            [105.1166, 10.9606],
-            [105.1179, 10.9497],
-            [105.1167, 10.9442],
-            [105.1037, 10.9276],
-            [105.1022, 10.9227],
-            [105.1067, 10.9192],
-            [105.1323, 10.9215],
-            [105.133, 10.9168],
-            [105.1286, 10.9054],
-            [105.1511, 10.8987],
-            [105.1566, 10.8287]
-          ]
-        ]}
-      />
+      <XMap className='w-full h-[500px]' center={position} state={selectedState} polygon={[]} />
     </div>
   );
 }

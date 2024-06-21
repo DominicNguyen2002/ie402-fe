@@ -1,11 +1,18 @@
-import { API, USER_ENDPOINT } from '~/constants/constants';
 import axiosService from './axios-service';
 
-const URL = `${API}/${USER_ENDPOINT}`;
-
 export const userApi = {
-  getUserInfo: async () => {
-    const response = await axiosService.get<IResponseSuccess<UpdateUser>>(`${URL}`);
+  getUser: async (userId: string) => {
+    const response = await axiosService.get<IResponseSuccess<IUser>>(`/user/${userId}`);
+
+    return response.data.data;
+  },
+  update: async (userId: string, data: IUpdateUser) => {
+    const response = await axiosService.put<IResponseSuccess<IUser>>(`/user/${userId}`, data);
+
+    return response.data.data;
+  },
+  updatePassword: async (userId: string, data: IUserChangePassword) => {
+    const response = await axiosService.put<IResponseSuccess<IUser>>(`/user/${userId}/change-password`, data);
 
     return response.data.data;
   }
